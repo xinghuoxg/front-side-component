@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+    User:WangQiang
+    Time:2016 11 02
+    Description:
+-->
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>left side</title>
+</head>
+<body>
+<div th:fragment="plan-nav" class="col-md-3">
+    <div class="row">
+        <h4>plan lists</h4>
+    </div>
+    <div class="row">
+        <ul>
+            <li th:each="plan : ${plans}">
+                <a th:href="@{/plans/${plan.id}}" th:text="${plan.name}">plan demo</a>
+                <ul>
+                    <li th:each="task : ${tasks}">
+                        <a th:if="${plan.id==task.planId}" th:href="@{/task/${task.id}}" th:text="${task.taskName}">task
+                            name</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div th:fragment="blog-nav" class="col-md-3">
+    <div class="row">
+        <h4>blog lists</h4>
+    </div>
+    <div class="row">
+        <ul>
+            <li th:each="blog : ${blogs}">
+                <a th:href="@{/blogs/${blog.id}}" th:text="${blog.title}">blog title</a>
+            </li>
+        </ul>
+        <button type="button" id="write_blog" class="btn btn-primary">write blog</button>
+        <button type="button" id="cancel_blog" class="btn btn-primary" style="display:none">cancel</button>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("#write_blog").click(function(){
+              $("#blog-read-container").hide();
+              $("#add_blog").show();
+              $("#cancel_blog").show();
+              $("#write_blog").hide();
+            });
+            $("#cancel_blog").click(function(){
+              $("#blog-read-container").show();
+              $("#add_blog").hide();
+              $("#write_blog").show();
+              $("#cancel_blog").hide();
+            });
+        });
+
+    </script>
+</div>
+</body>
+</html>
