@@ -1,0 +1,54 @@
+@nav-height: 60px;
+@nav-background-color:white;
+@nav-menu-list-normal-color:green;
+@nav-menu-list-font-size:@nav-height/5*2;
+@nav-menu-list-font-hover-size:@nav-menu-list-font-size+2;
+nav {
+    width: 100%;
+    height: @nav-height;
+    background-color: @nav-background-color;
+    @nav-padding-width: 5px;
+    padding: 0px,@nav-padding-width;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 1030;
+    top:0;
+    .nav-logo {
+        width: auto;
+        height: @nav-height;
+    }
+    ul.nav-menu {
+        margin: 0px;
+        height: 100%;
+        float: right;
+        li {
+            margin: 0px;
+            height: 100%;
+            list-style-type:none; //去掉项目黑点
+            float: left;
+            padding: 0px 10px;
+            position: relative;
+            top:50%;
+            transform: translateY(-50%);
+            a {
+                font-size: @nav-menu-list-font-size;
+                text-decoration : none;
+                color: @nav-menu-list-normal-color;
+                height: @nav-height;
+                line-height: @nav-height;
+            }
+            a :hover{
+                font-size: @nav-menu-list-font-hover-size;
+            }
+            &.active{
+                background-color:darken(@nav-background-color,10%);
+            }
+            :hover{
+               .active;
+            }
+        }
+
+    }
+}
+

@@ -1,18 +1,21 @@
+package com.springboot.mybatis.startup;
 
-
-import city.CityMapper;
+import com.springboot.mybatis.city.CityMapper;
+import com.springboot.mybatis.config.MyWebAppConfigurer;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 @SpringBootApplication
-public class SampleAnnotationApplication implements CommandLineRunner {
+@MapperScan(basePackages = "com.springboot.mybatis.*")
+public class SampleAnnotationApplication extends MyWebAppConfigurer implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(SampleAnnotationApplication.class, args);
     }
-
-    final private CityMapper cityMapper;
+    @Autowired
+    CityMapper cityMapper;
 
     public SampleAnnotationApplication(CityMapper cityMapper) {
         this.cityMapper = cityMapper;

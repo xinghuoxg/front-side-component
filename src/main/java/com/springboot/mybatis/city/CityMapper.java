@@ -1,4 +1,4 @@
-package city;
+package com.springboot.mybatis.city;
 
 /**
  * @Description://TODO
